@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
@@ -29,20 +31,20 @@ class MosqueController extends Controller
         ]);
         $mosque->save();
 
-        return response()->json('The post successfully added');
+        return response()->json('The Mosque successfully added');
     }
 
     
     public function edit($id)
     {
-        $mosque = mosque::find($id);
+        $mosque = Mosque::find($id);
         return response()->json($mosque);
     }
 
    
     public function update($id, Request $request)
     {
-        $mosque = mosque::find($id);
+        $mosque = Mosque::find($id);
         $mosque->update($request->all());
 
         return response()->json('The mosque successfully updated');
@@ -51,7 +53,7 @@ class MosqueController extends Controller
     
     public function delete($id)
     {
-        $mosque = mosque::find($id);
+        $mosque = Mosque::find($id);
         $mosque->delete();
 
         return response()->json('The mosque successfully deleted');

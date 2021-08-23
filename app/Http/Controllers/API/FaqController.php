@@ -15,14 +15,14 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faqs = Faq::all()->toArray();
+        $faqs= Faq::all()->toArray();
         return array_reverse($faqs);
     }
 
     //
     public function add(Request $request)
     {
-        $faq = new Blog([
+        $faq = new Faq([
             'question' => $request->question,
             'answer' => $request->answer
         ]);

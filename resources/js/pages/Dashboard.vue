@@ -42,7 +42,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">  Welcome {{ name }}</a>
+          <a href="#" class="d-block">  Salam {{ name }}</a>
         </div>
       </div>
 
@@ -89,22 +89,36 @@
           </li>
             <li class="nav-item">
     
-             <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i>
+             <router-link to="/zakat-requests" class="nav-link"><i class="nav-icon fas fa-th"></i>
                Requests
               </router-link>
             
           </li>
             <li class="nav-item">
     
-             <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i>
+             <router-link to="/donations" class="nav-link"><i class="nav-icon fas fa-th"></i>
                Donations
               </router-link>
             
           </li>
             <li class="nav-item">
     
-             <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i>
+             <router-link to="/blogs" class="nav-link"><i class="nav-icon fas fa-th"></i>
                Zakat info-blog
+              </router-link>
+            
+          </li>
+          <li class="nav-item">
+    
+             <router-link to="/nisabs" class="nav-link"><i class="nav-icon fas fa-th"></i>
+                 Nisab
+              </router-link>
+            
+          </li>
+           <li class="nav-item">
+    
+             <router-link to="/faqs" class="nav-link"><i class="nav-icon fas fa-th"></i>
+                 Faqs
               </router-link>
             
           </li>

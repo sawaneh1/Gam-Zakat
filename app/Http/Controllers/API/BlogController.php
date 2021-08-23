@@ -19,7 +19,7 @@ class BlogController extends Controller
     public function add(Request $request)
     {
         $blog = new Blog([
-            'title' => $request->name,
+            'title' => $request->title,
             'text' => $request->text
         ]);
         $blog->save();
