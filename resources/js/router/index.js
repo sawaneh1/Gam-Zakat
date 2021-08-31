@@ -10,15 +10,44 @@ import Books from '../components/Books';
 import AddBook from '../components/AddBook';
 import EditBook from '../components/EditBook';
 
+import Blogs from '../components/Blogs';
+import AddBlog from '../components/AddBlog';
+import EditBlog from '../components/EditBlog';
+
+import Nisabs from '../components/Nisabs';
+import AddNisab from '../components/AddNisab';
+import EditNisab from '../components/EditNisab';
+
+
+
+
+
 import ZakatItems from '../components/ZakatItems';
 import AddZakatItem from '../components/AddZakatItem';
 import EditZakatItem from '../components/EditZakatItem';
+import Faqs from '../components/Faqs';
+import AddFaq from '../components/AddFaq';
+import EditFaq from '../components/EditFaq';
+import Donations from '../components/Donations';
+import ZakatRequests from '../components/ZakatRequests';
+
+
 
 export const routes = [
     {
         name: 'home',
         path: '/',
         component: Home
+    },
+    {
+        name: 'donations',
+        path: '/donations',
+        component: Donations
+    },
+    {
+        name: 'zakat-requests',
+        path: '/zakat-requests',
+        component: ZakatRequests
     },
     {
         name: 'about',
@@ -71,6 +100,58 @@ export const routes = [
         name: 'editbook',
         path: '/books/edit/:id',
         component: EditBook
+    },
+    {
+        name: 'blogs',
+        path: '/blogs',
+        component: Blogs
+    },
+
+
+    {
+        name: 'addblog',
+        path: '/blogs/add',
+        component: AddBlog
+    },
+    {
+        name: 'editblog',
+        path: '/blogs/edit/:id',
+        component: EditBlog
+    },
+    {
+        name: 'nisabs',
+        path: '/nisabs',
+        component: Nisabs
+    },
+
+
+    {
+        name: 'addnisab',
+        path: '/nisabs/add',
+        component: AddNisab
+    },
+    
+    {
+        name: 'editnisab',
+        path: '/nisabs/edit/:id',
+        component: EditNisab
+    },
+    {
+        name: 'faqs',
+        path: '/faqs',
+        component: Faqs
+    },
+
+
+    {
+        name: 'addfaq',
+        path: '/faqs/add',
+        component: AddFaq
+    },
+    {
+        name: 'editfaq',
+        path: '/faqs/edit/:id',
+        component: EditFaq
     },
 ];
 

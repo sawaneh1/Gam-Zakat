@@ -1,35 +1,37 @@
 <template>
     <div class="container-fluid">
-        <h4 class="text-center">All zakatitems</h4><br/>
-        <table class="table  table-hover">
+        <h4 class="text-center">All zakatRequests</h4><br/>
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Rates</th>
-                <th>Category</th>
-                
+                <th>PHONE</th>
+                <th>Address</th>
+                <th>reason</th>
                 <th>Actions</th>
+               
             </tr>
             </thead>
             <tbody>
-            <tr v-for="zakatitem in zakatitems" :key="zakatitem.id">
-                <td>{{ zakatitem.id }}</td>
-                <td>{{ zakatitem.name }}</td>
-                <td>{{ zakatitem.rate }}</td>
-                <td>{{ zakatitem.category}}</td>
+            <tr v-for="zakatRequest in zakatRequests" :key="zakatRequest.id">
+                <td>{{ zakatRequest.id }}</td>
+                <td>{{ zakatRequest.name }}</td>
+                <td>{{ zakatRequest.phone }}</td>
+                <td>{{ zakatRequest.address }}</td>
+                <td>{{ zakatRequest.reason }}</td>
+        
                 <td>
                     <div class="btn-group" role="group">
-                        <router-link :to="{name: 'editzakatitem', params: { id: zakatitem.id }}" class="btn btn-sm btn-primary">Edit
-                        </router-link>
-                        <button class="btn btn-sm btn-danger" @click="deletezakatitem(zakatitem.id)">Delete</button>
+                        
+                        <button class="btn btn-success" @click="deletezakatRequest(zakatRequest.id)">Approve Request</button>
                     </div>
                 </td>
             </tr>
             </tbody>
         </table>
 
-        <button type="button" class="btn btn-info" @click="this.$router.push('/zakatitems/add')">Add zakatitem</button>
+        
     </div>
 </template>
 
@@ -37,14 +39,14 @@
 export default {
     data() {
         return {
-            zakatitems: []
+            zakatRequests: []
         }
     },
     created() {
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
-            this.$axios.get('/api/zakatitems')
+            this.$axios.get('/api/zakat-requests')
                 .then(response => {
-                    this.zakatitems = response.data;
+                    this.zakatRequests = response.data;
                 })
                 .catch(function (error) {
                     console.error(error);
@@ -52,12 +54,12 @@ export default {
         })
     },
     methods: {
-        deletezakatitem(id) {
+        deletezakatRequest(id) {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                this.$axios.delete(`/api/zakatitems/delete/${id}`)
+                this.$axios.delete(`/api/zakat-requests/delete/${id}`)
                     .then(response => {
-                        let i = this.zakatitems.map(item => item.id).indexOf(id); // find index of your object
-                        this.zakatitems.splice(i, 1)
+                        let i = this.zakatRequests.map(item => item.id).indexOf(id); // find index of your object
+                        this.zakatRequests.splice(i, 1)
                     })
                     .catch(function (error) {
                         console.error(error);

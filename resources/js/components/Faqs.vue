@@ -1,35 +1,36 @@
 <template>
     <div class="container-fluid">
-        <h4 class="text-center">All zakatitems</h4><br/>
-        <table class="table  table-hover">
+        <h4 class="text-center">All Faq</h4><br/>
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Rates</th>
-                <th>Category</th>
+                <th>QUESTION</th>
+                <th>ANSWER</th>
+                
                 
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="zakatitem in zakatitems" :key="zakatitem.id">
-                <td>{{ zakatitem.id }}</td>
-                <td>{{ zakatitem.name }}</td>
-                <td>{{ zakatitem.rate }}</td>
-                <td>{{ zakatitem.category}}</td>
+            <tr v-for="faq in faqs" :key="faq.id">
+                <td>{{ faq.id }}</td>
+                <td>{{ faq.question }}</td>
+                <td>{{ faq.answer }}</td>
+               
+               
                 <td>
                     <div class="btn-group" role="group">
-                        <router-link :to="{name: 'editzakatitem', params: { id: zakatitem.id }}" class="btn btn-sm btn-primary">Edit
+                        <router-link :to="{name: 'editfaq', params: { id: faq.id }}" class="btn btn-sm btn-primary">Edit
                         </router-link>
-                        <button class="btn btn-sm btn-danger" @click="deletezakatitem(zakatitem.id)">Delete</button>
+                        <button class="btn btn-danger btn-sm" @click="deletefaq(faq.id)">Delete</button>
                     </div>
                 </td>
             </tr>
             </tbody>
         </table>
 
-        <button type="button" class="btn btn-info" @click="this.$router.push('/zakatitems/add')">Add zakatitem</button>
+        <button type="button" class="btn btn-info" @click="this.$router.push('/faqs/add')">Add faq</button>
     </div>
 </template>
 
@@ -37,14 +38,14 @@
 export default {
     data() {
         return {
-            zakatitems: []
+            faqs: []
         }
     },
     created() {
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
-            this.$axios.get('/api/zakatitems')
+            this.$axios.get('/api/faqs')
                 .then(response => {
-                    this.zakatitems = response.data;
+                    this.faqs = response.data;
                 })
                 .catch(function (error) {
                     console.error(error);
@@ -52,12 +53,12 @@ export default {
         })
     },
     methods: {
-        deletezakatitem(id) {
+        deletefaq(id) {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                this.$axios.delete(`/api/zakatitems/delete/${id}`)
+                this.$axios.delete(`/api/faqs/delete/${id}`)
                     .then(response => {
-                        let i = this.zakatitems.map(item => item.id).indexOf(id); // find index of your object
-                        this.zakatitems.splice(i, 1)
+                        let i = this.faqs.map(item => item.id).indexOf(id); // find index of your object
+                        this.faqs.splice(i, 1)
                     })
                     .catch(function (error) {
                         console.error(error);

@@ -15,6 +15,10 @@ class CreateMosquesTable extends Migration
     {
         Schema::create('mosques', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('imam_name')->nullable();
+            $table->string('location');
+            $table->string('phone');
             $table->timestamps();
         });
     }

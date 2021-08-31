@@ -1,71 +1,54 @@
 <?php
-   
-namespace App\Http\Controllers\API;
-   
-use Illuminate\Http\Request;
-use App\Http\Controllers\API\BaseController as BaseController;
-use Validator;
-use App\Models\Blog;
-use App\Http\Resources\Blog as BlogResource;
-   
-class BlogController extends BaseController
-{
 
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use Illuminate\Http\Request;
+
+class BlogController extends Controller
+{
+    
     public function index()
     {
-        $blogs = Blog::all();
-        return $this->sendResponse(BlogResource::collection($blogs), 'Posts fetched.');
+        $blogs = Blog::all()->toArray();
+        return array_reverse($blogs);
+    }
+
+    //
+    public function add(Request $request)
+    {
+        $blog = new Blog([
+            'title' => $request->title,
+            'text' => $request->text
+        ]);
+        $blog->save();
+
+        return response()->json('The post successfully added');
     }
 
     
-    public function store(Request $request)
-    {
-        $input = $request->all();
-        $validator = Validator::make($input, [
-            'title' => 'required',
-            'description' => 'required'
-        ]);
-        if($validator->fails()){
-            return $this->sendError($validator->errors());       
-        }
-        $blog = Blog::create($input);
-        return $this->sendResponse(new BlogResource($blog), 'Post created.');
-    }
-
-   
-    public function show($id)
+    public function edit($id)
     {
         $blog = Blog::find($id);
-        if (is_null($blog)) {
-            return $this->sendError('Post does not exist.');
-        }
-        return $this->sendResponse(new BlogResource($blog), 'Post fetched.');
+        return response()->json($blog);
     }
-    
 
-    public function update(Request $request, Blog $blog)
-    {
-        $input = $request->all();
-
-        $validator = Validator::make($input, [
-            'title' => 'required',
-            'description' => 'required'
-        ]);
-
-        if($validator->fails()){
-            return $this->sendError($validator->errors());       
-        }
-
-        $blog->title = $input['title'];
-        $blog->description = $input['description'];
-        $blog->save();
-        
-        return $this->sendResponse(new BlogResource($blog), 'Post updated.');
-    }
    
-    public function destroy(Blog $blog)
+    public function update($id, Request $request)
     {
+        $blog = Blog::find($id);
+        $blog->update($request->all());
+
+        return response()->json('The blog successfully updated');
+    }
+
+    
+    public function delete($id)
+    {
+        $blog = Blog::find($id);
         $blog->delete();
-        return $this->sendResponse([], 'Post deleted.');
+
+        return response()->json('The blog successfully deleted');
     }
 }

@@ -1,35 +1,37 @@
 <template>
     <div class="container-fluid">
-        <h4 class="text-center">All zakatitems</h4><br/>
-        <table class="table  table-hover">
+        <h4 class="text-center">All nisab</h4><br/>
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Rates</th>
-                <th>Category</th>
-                
+                <th>Nisab</th>
+               
+                <th>Statement</th>
+               
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="zakatitem in zakatitems" :key="zakatitem.id">
-                <td>{{ zakatitem.id }}</td>
-                <td>{{ zakatitem.name }}</td>
-                <td>{{ zakatitem.rate }}</td>
-                <td>{{ zakatitem.category}}</td>
+            <tr v-for="nisab in nisabs" :key="nisab.id">
+                <td>{{ nisab.id }}</td>
+                <td>{{ nisab.nisab }}</td>
+                <td>{{ nisab.statement }}</td>
+               
+                <td>{{ nisab.created_at }}</td>
+                <td>{{ nisab.updated_at }}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <router-link :to="{name: 'editzakatitem', params: { id: zakatitem.id }}" class="btn btn-sm btn-primary">Edit
+                        <router-link :to="{name: 'editnisab', params: { id: nisab.id }}" class="btn btn-sm btn-primary">Edit nisab
                         </router-link>
-                        <button class="btn btn-sm btn-danger" @click="deletezakatitem(zakatitem.id)">Delete</button>
+                        <button class="btn btn-danger btn-sm" @click="deletenisab(nisab.id)">Delete</button>
                     </div>
                 </td>
             </tr>
             </tbody>
         </table>
 
-        <button type="button" class="btn btn-info" @click="this.$router.push('/zakatitems/add')">Add zakatitem</button>
+        <button type="button" class="btn btn-success" @click="this.$router.push('/nisabs/add')">Add nisab</button>
     </div>
 </template>
 
@@ -37,14 +39,14 @@
 export default {
     data() {
         return {
-            zakatitems: []
+            nisabs: []
         }
     },
     created() {
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
-            this.$axios.get('/api/zakatitems')
+            this.$axios.get('/api/nisabs')
                 .then(response => {
-                    this.zakatitems = response.data;
+                    this.nisabs = response.data;
                 })
                 .catch(function (error) {
                     console.error(error);
@@ -52,12 +54,12 @@ export default {
         })
     },
     methods: {
-        deletezakatitem(id) {
+        deletenisab(id) {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
-                this.$axios.delete(`/api/zakatitems/delete/${id}`)
+                this.$axios.delete(`/api/nisabs/delete/${id}`)
                     .then(response => {
-                        let i = this.zakatitems.map(item => item.id).indexOf(id); // find index of your object
-                        this.zakatitems.splice(i, 1)
+                        let i = this.nisabs.map(item => item.id).indexOf(id); // find index of your object
+                        this.nisabs.splice(i, 1)
                     })
                     .catch(function (error) {
                         console.error(error);

@@ -4,7 +4,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="dist/img/avatar.png" alt="Gamzakat" height="60" width="60">
   </div>
 
   <!-- Navbar -->
@@ -17,9 +17,9 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="index3.html" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
-      </li>
+      </li> -->
     </ul>
 
     <!-- Right navbar links -->
@@ -30,7 +30,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="dist/img/AdminLTELogo.png" alt="Gamzakat" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">GamZakat</span>
     </a>
 
@@ -42,7 +42,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">  Welcome {{ name }}</a>
+          <a href="#" class="d-block">  Salam {{ name }}</a>
         </div>
       </div>
 
@@ -64,15 +64,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
          
-          <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Widgets
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
+        
             <li class="nav-item">
     
              <router-link to="/zakatitems" class="nav-link"><i class="nav-icon fas fa-th"></i>
@@ -80,31 +72,45 @@
               </router-link>
             
           </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
     
              <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i>
                Mosques
               </router-link>
             
-          </li>
+          </li> -->
             <li class="nav-item">
     
-             <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i>
-               Requests
+             <router-link to="/zakat-requests" class="nav-link"><i class="nav-icon fas fa-th"></i>
+              zakat Requests
               </router-link>
             
           </li>
             <li class="nav-item">
     
-             <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i>
+             <router-link to="/donations" class="nav-link"><i class="nav-icon fas fa-th"></i>
                Donations
               </router-link>
             
           </li>
             <li class="nav-item">
     
-             <router-link to="/dashboard" class="nav-link"><i class="nav-icon fas fa-th"></i>
+             <router-link to="/blogs" class="nav-link"><i class="nav-icon fas fa-th"></i>
                Zakat info-blog
+              </router-link>
+            
+          </li>
+          <li class="nav-item">
+    
+             <router-link to="/nisabs" class="nav-link"><i class="nav-icon fas fa-th"></i>
+                 Nisab
+              </router-link>
+            
+          </li>
+           <li class="nav-item">
+    
+             <router-link to="/faqs" class="nav-link"><i class="nav-icon fas fa-th"></i>
+                 Faqs
               </router-link>
             
           </li>
@@ -112,6 +118,8 @@
           
                   
         </ul>
+<router-view/>
+
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -147,7 +155,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>5</h3>
+                <h3>{{zakatitems.length}}</h3>
 
                 <p>Zakat items</p>
               </div>
@@ -162,24 +170,26 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>5<sup style="font-size: 20px"></sup></h3>
+                <h3>{{donations.length}}<sup style="font-size: 20px"></sup></h3>
 
                 <p>Donations</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+           <router-link to="/donations" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i>
+               more info
+              </router-link>
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>13</h3>
+              <div class="inner" v-for="nisab in nisabs" :key="nisab">
+                <h3>{{nisab.nisab}}</h3>
 
-                <p>Mosques Registered</p>
+                <p>is{{nisab.statement}}</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -192,14 +202,17 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>23</h3>
+                <h3>{{zakatRequests.length}}</h3>
 
                 <p>Donation Requests</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+               <router-link to="/donations" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i>
+               more info
+              </router-link>
+             
             </div>
           </div>
           <!-- ./col -->
@@ -233,7 +246,50 @@ export default {
     data() {
         return {
             name: null,
+            zakatRequests:[],
+            donations: [],
+            zakatitems:[],
+            nisabs:[]
+
         }
+    },
+     mounted() {
+        this.$axios.get('/sanctum/csrf-cookie').then(response => {
+            this.$axios.get('/api/zakat-requests')
+                .then(response => {
+                    this.zakatRequests = response.data;
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        }),
+        this.$axios.get('/sanctum/csrf-cookie').then(response => {
+            this.$axios.get('/api/nisabs')
+                .then(response => {
+                    this.nisabs = response.data;
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        }),
+         this.$axios.get('/sanctum/csrf-cookie').then(response => {
+            this.$axios.get('/api/donations')
+                .then(response => {
+                    this.donations = response.data;
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        }),
+         this.$axios.get('/sanctum/csrf-cookie').then(response => {
+            this.$axios.get('/api/zakatitems')
+                .then(response => {
+                    this.zakatitems = response.data;
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });
+        })
     },
     created() {
         if (window.Laravel.user) {

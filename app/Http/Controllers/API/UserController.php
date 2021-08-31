@@ -45,10 +45,10 @@ class UserController extends Controller
     {
         $credentials = [
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
         ];
 
-        if (Auth::attempt($credentials, true)) {
+        if (Auth::attempt($credentials)) {
             $success = true;
             $message = 'User login successfully';
         } else {
