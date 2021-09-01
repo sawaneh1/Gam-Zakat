@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <h4 class="text-center">Add faq</h4>
         <div class="row container-fluid">
             <div class="alert-success text-center" v-if="loading">adding faq.......</div>
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <form @submit.prevent="addFaq">
                     <div class="form-group">
                         <label>Question</label>

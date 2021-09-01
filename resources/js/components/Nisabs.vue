@@ -1,15 +1,14 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <h4 class="text-center">All nisab</h4><br/>
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Rates</th>
-                <th>Category</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                <th>Nisab</th>
+               
+                <th>Statement</th>
+               
                 <th>Actions</th>
             </tr>
             </thead>
@@ -23,16 +22,16 @@
                 <td>{{ nisab.updated_at }}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <router-link :to="{name: 'editnisab', params: { id: nisab.id }}" class="btn btn-primary">Edit nisab
+                        <router-link :to="{name: 'editnisab', params: { id: nisab.id }}" class="btn btn-sm btn-primary">Edit nisab
                         </router-link>
-                        <button class="btn btn-danger" @click="deletenisab(nisab.id)">Delete</button>
+                        <button class="btn btn-danger btn-sm" @click="deletenisab(nisab.id)">Delete</button>
                     </div>
                 </td>
             </tr>
             </tbody>
         </table>
 
-        <button type="button" class="btn btn-info" @click="this.$router.push('/nisabs/add')">Add nisab</button>
+        <button type="button" class="btn btn-success" @click="this.$router.push('/nisabs/add')">Add nisab</button>
     </div>
 </template>
 

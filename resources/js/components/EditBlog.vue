@@ -1,8 +1,8 @@
 <template>
-    <div>
+    <div class="blog">
         <h4 class="text-center">Edit Blog</h4>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <form @submit.prevent="updateBook">
                     <div class="form-group">
                         <label>Title</label>
@@ -10,7 +10,8 @@
                     </div><br>
                     <div class="form-group">
                         <label>Content</label>
-                        <input type="text" class="form-control" v-model="blog.text">
+                        <!-- <input type="text" class="form-control" v-model="blog.text"> -->
+                        <textarea rows="10" cols="80" class="form-control" v-model="blog.text"></textarea>
                     </div><br>
                     <button type="submit" class="btn btn-primary">Update Blog</button>
                 </form>
@@ -58,3 +59,12 @@ export default {
     }
 }
 </script>
+<style>
+.blog{
+    width:100vw !important;
+    margin:auto;
+    display:grid !important;
+    place-items: center !important;
+}
+
+</style>

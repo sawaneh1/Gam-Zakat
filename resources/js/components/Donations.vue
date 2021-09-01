@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <h4 class="text-center">All donations</h4><br/>
         <table class="table table-bordered">
             <thead>

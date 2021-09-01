@@ -1,15 +1,12 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <h4 class="text-center">All blog</h4><br/>
-        <table class="table table-bordered">
+        <table class="table table-bordered table-hover">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Rates</th>
-                <th>Category</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                <th>No</th>
+                <th>Title</th>
+                <th>Text</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -19,15 +16,14 @@
                 <td>{{ blog.title }}</td>
                 <td>{{ blog.text }}</td>
                
-                <td>{{ blog.created_at }}</td>
-                <td>{{ blog.updated_at }}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <router-link :to="{name: 'editblog', params: { id: blog.id }}" class="btn btn-primary">Edit blog
+                        <router-link :to="{name: 'editblog', params: { id: blog.id }}" class="btn btn-primary btn-sm">Edit
                         </router-link>
-                        <button class="btn btn-danger" @click="deleteblog(blog.id)">Delete</button>
+                      <button class="btn btn-danger btn-sm" @click="deleteblog(blog.id)">Delete</button>
                     </div>
                 </td>
+                
             </tr>
             </tbody>
         </table>

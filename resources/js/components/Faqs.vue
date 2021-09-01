@@ -1,15 +1,14 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <h4 class="text-center">All Faq</h4><br/>
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Rates</th>
-                <th>Category</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                <th>QUESTION</th>
+                <th>ANSWER</th>
+                
+                
                 <th>Actions</th>
             </tr>
             </thead>
@@ -19,13 +18,12 @@
                 <td>{{ faq.question }}</td>
                 <td>{{ faq.answer }}</td>
                
-                <td>{{ faq.created_at }}</td>
-                <td>{{ faq.updated_at }}</td>
+               
                 <td>
                     <div class="btn-group" role="group">
-                        <router-link :to="{name: 'editfaq', params: { id: faq.id }}" class="btn btn-primary">Edit faq
+                        <router-link :to="{name: 'editfaq', params: { id: faq.id }}" class="btn btn-sm btn-primary">Edit
                         </router-link>
-                        <button class="btn btn-danger" @click="deletefaq(faq.id)">Delete</button>
+                        <button class="btn btn-danger btn-sm" @click="deletefaq(faq.id)">Delete</button>
                     </div>
                 </td>
             </tr>

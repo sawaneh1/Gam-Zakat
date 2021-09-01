@@ -130,6 +130,7 @@ export const routes = [
         path: '/nisabs/add',
         component: AddNisab
     },
+    
     {
         name: 'editnisab',
         path: '/nisabs/edit/:id',

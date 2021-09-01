@@ -1,15 +1,14 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <h4 class="text-center">All zakatitems</h4><br/>
-        <table class="table table-bordered">
+        <table class="table  table-hover">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Rates</th>
                 <th>Category</th>
-                <th>Created At</th>
-                <th>Updated At</th>
+                
                 <th>Actions</th>
             </tr>
             </thead>
@@ -19,13 +18,11 @@
                 <td>{{ zakatitem.name }}</td>
                 <td>{{ zakatitem.rate }}</td>
                 <td>{{ zakatitem.category}}</td>
-                <td>{{ zakatitem.created_at }}</td>
-                <td>{{ zakatitem.updated_at }}</td>
                 <td>
                     <div class="btn-group" role="group">
-                        <router-link :to="{name: 'editzakatitem', params: { id: zakatitem.id }}" class="btn btn-primary">Edit
+                        <router-link :to="{name: 'editzakatitem', params: { id: zakatitem.id }}" class="btn btn-sm btn-primary">Edit
                         </router-link>
-                        <button class="btn btn-danger" @click="deletezakatitem(zakatitem.id)">Delete</button>
+                        <button class="btn btn-sm btn-danger" @click="deletezakatitem(zakatitem.id)">Delete</button>
                     </div>
                 </td>
             </tr>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <h4 class="text-center">All zakatRequests</h4><br/>
         <table class="table table-bordered">
             <thead>
@@ -24,7 +24,7 @@
                 <td>
                     <div class="btn-group" role="group">
                         
-                        <button class="btn btn-danger" @click="deletezakatRequest(zakatRequest.id)">Delete</button>
+                        <button class="btn btn-success" @click="deletezakatRequest(zakatRequest.id)">Approve Request</button>
                     </div>
                 </td>
             </tr>
